@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Sale {
+  id          String       @id @default(cuid())
+  value       Float
+  category    CategorySale
+  description String?
+  date        DateTime     @db.Date()
+}
+
+model Expense {
+  id          String          @id @default(cuid())
+  value       Float
+  category    CategoryExpense
+  description String?
+  date        DateTime        @db.Date()
+}
+
+enum CategorySale {
+  DINHEIRO
+  PIX
+  DEBITO
+  CREDITO
+  CREDILOJA
+}
+
+enum CategoryExpense {
+  DESPESA
+  RETIRADA
+  PAGAMENTO
+  VALE
+}
