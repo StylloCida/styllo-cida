@@ -44,6 +44,8 @@ export default function Resume({ dailyLog }: Props) {
     return acc
   }, 0)
 
+  console.log('Totais: ', totalPix, totalDinheiro, totalDebito)
+
   const resume = `Vendas do dia ${Today.toLocaleDateString('pt-br')}\n
   Pix: ${totalPix.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
   Dinheiro: ${totalDinheiro.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
