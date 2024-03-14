@@ -26,9 +26,7 @@ export default function DatePicker() {
     setLoading(true)
 
     try {
-      const response = await fetch(
-        `${process.env.BASE_URL}/api/relatorio?dia=${day}&mes=${month}`,
-      )
+      const response = await fetch(`/api/relatorio?dia=${day}&mes=${month}`)
       if (!response.ok) {
         return alert('Erro ao obter dados')
       }
