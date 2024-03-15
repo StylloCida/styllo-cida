@@ -11,6 +11,7 @@ import {
 import { Expense, Sale } from '@prisma/client'
 import { DollarSign, MessageSquareMore, Pin, Wallet } from 'lucide-react'
 import Tag from './tag'
+import Link from 'next/link'
 
 function Title({ title }: { title: string }) {
   return (
@@ -42,7 +43,11 @@ export function RenderSales({ data }: { data: Sale[] }) {
           {data.map((item) => (
             <TableRow key={item.id}>
               <TableCell className="font-medium">
-                {item.value.toFixed(2).replace('.', ',')}
+                <Link
+                  href={`/editar?id=${item.id}&valor=${item.value}&categoria=${item.category}&desc=${item.description}`}
+                >
+                  {item.value.toFixed(2).replace('.', ',')}
+                </Link>
               </TableCell>
               <TableCell>{<Tag type={item.category} />}</TableCell>
               <TableCell>{item.description}</TableCell>
@@ -80,7 +85,11 @@ export function RenderExpenses({ data }: { data: Expense[] }) {
           {data.map((item) => (
             <TableRow key={item.id}>
               <TableCell className="font-medium">
-                {item.value.toFixed(2).replace('.', ',')}
+                <Link
+                  href={`/editar?id=${item.id}&valor=${item.value}&categoria=${item.category}&desc=${item.description}`}
+                >
+                  {item.value.toFixed(2).replace('.', ',')}
+                </Link>
               </TableCell>
               <TableCell>{<Tag type={item.category} />}</TableCell>
               <TableCell>{item.description}</TableCell>

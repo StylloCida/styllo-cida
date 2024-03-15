@@ -6,7 +6,7 @@ import { Button, Input, Select, SelectItem } from '@nextui-org/react'
 import { Expense, Sale } from '@prisma/client'
 import { useState } from 'react'
 
-export default function DatePicker() {
+export default function Record() {
   const [day, setDay] = useState('')
   const [month, setMonth] = useState('')
   const [sales, setSales] = useState<Sale[] | null>(null)
@@ -95,9 +95,7 @@ export default function DatePicker() {
 
       {sales && expenses && (
         <div className="text-white">
-          <h1 className="my-5 text-center text-lg">
-            Resumo do dia {searchDate}
-          </h1>
+          <h1 className="my-5 text-center text-lg">Relatório {searchDate}</h1>
 
           <h2 className="my-2 text-xl italic text-neutral-500">Vendas</h2>
           {sales.length ? (
@@ -132,7 +130,7 @@ export default function DatePicker() {
             <div className="grid grid-cols-3">
               <div className="col-span-3 border-t-2" />
               <span className="font-medium">Valor</span>
-              <span className="font-medium">Forma de Pag.</span>
+              <span className="font-medium">Categoria</span>
               <span className="font-medium">Descrição</span>
               <div className="col-span-3 mb-2 border-t-2" />
               {expenses.map((expense) => (

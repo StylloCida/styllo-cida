@@ -1,4 +1,4 @@
-import DatePicker from '@/components/date-picker'
+import Record from '@/components/record'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
@@ -9,7 +9,7 @@ export default function Relatorio() {
         <ArrowLeft className="mr-2 w-5" />
         Voltar
       </Link>
-      <DatePicker />
+      <Record />
     </>
   )
 }

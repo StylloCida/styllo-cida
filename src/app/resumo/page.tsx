@@ -2,6 +2,7 @@ import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import * as actions from '@/actions'
 import Resume from '@/components/resume'
+import RevalidateCache from '@/components/revalidate-cache'
 
 export default async function Resumo() {
   const dailyLog = await actions.getDailyLogs()
@@ -16,6 +17,7 @@ export default async function Resumo() {
         Resumo de Hoje
       </h1>
       <Resume dailyLog={dailyLog} />
+      <RevalidateCache />
     </>
   )
 }

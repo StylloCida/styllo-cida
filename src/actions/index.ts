@@ -4,7 +4,9 @@ import { prisma } from '@/lib/prisma'
 import { ExpenseSchema, SaleSchema } from '@/lib/schema'
 import { ExpenseFormState, SaleFormState } from '@/lib/states'
 import { Today } from '@/utils'
+import { CategoryExpense, CategorySale } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 
 export async function newSale(
   formState: SaleFormState,
@@ -79,4 +81,68 @@ function clearNumber(value: string) {
   )
 
   return cleared
+}
+
+export async function updateRecord(
+  formState: SaleFormState,
+  formData: FormData,
+): Promise<SaleFormState> {
+  const id = formData.get('id') as string
+  const type = formData.get('type') as string
+  const value = formData.get('value') as string
+  const category = formData.get('category') as CategorySale | CategoryExpense
+  const description = formData.get('description') as string
+
+  const clearedValue = clearNumber(value)
+
+  if (!value || !category) {
+    return { success: false, errors: { value: [''], category: [''] } }
+  }
+
+  if (id && type === 'sale') {
+    const categorySale = category as CategorySale
+    await prisma.sale.update({
+      where: { id },
+      data: {
+        value: clearedValue,
+        category: categorySale,
+        description,
+      },
+    })
+    revalidatePath('/')
+  } else if (id && type === 'expense') {
+    const categoryExpense = category as CategoryExpense
+    await prisma.expense.update({
+      where: { id },
+      data: {
+        value: clearedValue,
+        category: categoryExpense,
+        description,
+      },
+    })
+    revalidatePath('/')
+  }
+
+  redirect('/')
+}
+
+export async function deleteRecord(id: string, category: 'sale' | 'expense') {
+  if (category === 'sale') {
+    await prisma.sale.delete({
+      where: { id },
+    })
+  }
+
+  if (category === 'expense') {
+    await prisma.expense.delete({
+      where: { id },
+    })
+  }
+
+  revalidatePath('/')
+  redirect('/')
+}
+
+export async function revalidateCache() {
+  return revalidatePath('/')
 }
