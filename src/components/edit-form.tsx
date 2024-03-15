@@ -70,6 +70,7 @@ export default function EditForm() {
             name="value"
             defaultValue={value}
             isInvalid={!!formState?.errors.value}
+            aria-label="Valor em reais"
           />
           <Select
             name="category"
