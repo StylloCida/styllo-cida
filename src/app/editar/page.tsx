@@ -1,6 +1,7 @@
 import EditForm from '@/components/edit-form'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
+import { Suspense } from 'react'
 
 export default function EditRecord() {
   return (
@@ -12,7 +13,9 @@ export default function EditRecord() {
       <h1 className="my-3 text-lg italic text-neutral-500">
         Editar Lançamento
       </h1>
-      <EditForm />
+      <Suspense>
+        <EditForm />
+      </Suspense>
     </>
   )
 }
