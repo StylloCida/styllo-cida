@@ -1,5 +1,3 @@
-'use client'
-
 import EditForm from '@/components/edit-form'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
