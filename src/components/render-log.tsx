@@ -44,7 +44,7 @@ export function RenderSales({ data }: { data: Sale[] }) {
             <TableRow key={item.id}>
               <TableCell className="font-medium">
                 <Link
-                  href={`/editar?id=${item.id}&valor=${item.value}&categoria=${item.category}&desc=${item.description}`}
+                  href={`/editar-registro?id=${item.id}&valor=${item.value}&categoria=${item.category}&desc=${item.description}`}
                 >
                   {item.value.toFixed(2).replace('.', ',')}
                 </Link>
@@ -86,7 +86,7 @@ export function RenderExpenses({ data }: { data: Expense[] }) {
             <TableRow key={item.id}>
               <TableCell className="font-medium">
                 <Link
-                  href={`/editar?id=${item.id}&valor=${item.value}&categoria=${item.category}&desc=${item.description}`}
+                  href={`/editar-registro?id=${item.id}&valor=${item.value}&categoria=${item.category}&desc=${item.description}`}
                 >
                   {item.value.toFixed(2).replace('.', ',')}
                 </Link>

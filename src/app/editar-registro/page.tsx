@@ -2,7 +2,7 @@ import EditForm from '@/components/edit-form'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
-export default function Edit() {
+export default function EditRecord() {
   return (
     <>
       <Link href="/" className="mb-5 inline-flex text-neutral-100">
