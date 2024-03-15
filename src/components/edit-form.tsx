@@ -8,14 +8,14 @@ import { useFormState } from 'react-dom'
 import { NumericFormat } from 'react-number-format'
 import * as actions from '@/actions'
 import ButtonDelete from '@/components/button-delete'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 
 export default function EditForm() {
+  const searchParams = useSearchParams()
   const [formState, action] = useFormState(actions.updateRecord, {
     success: false,
     errors: {},
   })
-  const searchParams = useSearchParams()
 
   const id = searchParams.get('id')
   const value = searchParams.get('valor')
@@ -50,8 +50,14 @@ export default function EditForm() {
     }
   }
 
+  function Spinner() {
+    return (
+      <div className="my-5 h-6 w-6 animate-spin rounded-full border-2 border-t-transparent" />
+    )
+  }
+
   return (
-    <>
+    <Suspense fallback={<Spinner />}>
       {isSale ? (
         // Formulário VENDAS
         <form action={action} className="space-y-5">
@@ -126,6 +132,6 @@ export default function EditForm() {
           />
         </form>
       )}
-    </>
+    </Suspense>
   )
 }
