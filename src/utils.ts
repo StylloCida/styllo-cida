@@ -33,12 +33,12 @@ export const selectedMonth = (initialMonth: string, finalMonth: string) => {
   }
 }
 
-export const commissionCalc = (value: string, percent: number) => {
+export const commissionCalc = (value: string) => {
   const clearedValue = parseFloat(
     value
       .replace(/[^0-9,.]/g, '')
       .replace(',', '.')
       .replace('.', ''),
   )
-  return currencyBRL(Math.round(clearedValue * (percent / 100)))
+  return currencyBRL(Math.round(clearedValue * 0.015))
 }

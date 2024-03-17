@@ -128,10 +128,8 @@ export default function RecordMonth() {
               <p>{totalSales}</p>
             </div>
             <div className="col-span-2 mb-5 grid grid-cols-2">
-              <p>Comissão: (3%)</p>
-              <p>{commissionCalc(totalSales, 3)}</p>
-              <p>Comissão: (2%)</p>
-              <p>{commissionCalc(totalSales, 2)}</p>
+              <p>Comissão: (1,5%)</p>
+              <p>{commissionCalc(totalSales)}</p>
             </div>
           </div>
 
