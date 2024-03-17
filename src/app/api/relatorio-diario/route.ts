@@ -8,15 +8,16 @@ export async function GET(request: Request) {
 
   const searchDate = new Date(2024, month, day)
 
-  const sales = await prisma.sale.findMany({
-    where: { date: searchDate },
-    orderBy: { date: 'desc' },
-  })
-
-  const expenses = await prisma.expense.findMany({
-    where: { date: searchDate },
-    orderBy: { date: 'desc' },
-  })
+  const [sales, expenses] = await Promise.all([
+    prisma.sale.findMany({
+      where: { date: searchDate },
+      orderBy: { date: 'desc' },
+    }),
+    prisma.expense.findMany({
+      where: { date: searchDate },
+      orderBy: { date: 'desc' },
+    }),
+  ])
 
   return Response.json({ sales, expenses })
 }

@@ -12,6 +12,7 @@ import { Expense, Sale } from '@prisma/client'
 import { DollarSign, MessageSquareMore, Pin, Wallet } from 'lucide-react'
 import Tag from './tag'
 import Link from 'next/link'
+import { currencyBRL } from '@/utils'
 
 function Title({ title }: { title: string }) {
   return (
@@ -56,8 +57,7 @@ export function RenderSales({ data }: { data: Sale[] }) {
         </TableBody>
       </Table>
       <span className="w-full p-2 text-end text-sm font-medium text-neutral-300">
-        Total:{' '}
-        {total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+        Total: {currencyBRL(total)}
       </span>
     </>
   )
@@ -98,8 +98,7 @@ export function RenderExpenses({ data }: { data: Expense[] }) {
         </TableBody>
       </Table>
       <span className="w-full p-2 text-end text-sm font-medium text-neutral-300">
-        Total:{' '}
-        {total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+        Total: {currencyBRL(total)}
       </span>
     </>
   )

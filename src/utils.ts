@@ -15,3 +15,30 @@ export const Months = [
   { key: '11', label: 'Novembro' },
   { key: '12', label: 'Dezembro' },
 ]
+
+export const currencyBRL = (number: number) => {
+  return number.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+}
+
+export const selectedMonth = (initialMonth: string, finalMonth: string) => {
+  const initial = new Date()
+  initial.setMonth(Number(initialMonth) - 1)
+
+  if (finalMonth && finalMonth !== initialMonth) {
+    const final = new Date()
+    final.setMonth(Number(finalMonth) - 1)
+    return `${initial.toLocaleDateString('pt-br', { month: 'long' })} até ${final.toLocaleDateString('pt-br', { month: 'long' })}`
+  } else {
+    return initial.toLocaleDateString('pt-br', { month: 'long' })
+  }
+}
+
+export const commissionCalc = (value: string, percent: number) => {
+  const clearedValue = parseFloat(
+    value
+      .replace(/[^0-9,.]/g, '')
+      .replace(',', '.')
+      .replace('.', ''),
+  )
+  return currencyBRL(Math.round(clearedValue * (percent / 100)))
+}

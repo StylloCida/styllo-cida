@@ -26,7 +26,10 @@ export default function Record() {
     setLoading(true)
 
     try {
-      const response = await fetch(`/api/relatorio?dia=${day}&mes=${month}`)
+      const response = await fetch(
+        `/api/relatorio-diario?dia=${day}&mes=${month}`,
+        { next: { revalidate: 600 }, cache: 'no-cache' },
+      )
       if (!response.ok) {
         return alert('Erro ao obter dados')
       }
