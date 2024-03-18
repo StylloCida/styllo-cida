@@ -103,7 +103,7 @@ export default function RecordMonth() {
             Relatório Mensal - {range}
           </h1>
 
-          <h2 className="my-2 text-xl italic text-neutral-500">Vendas</h2>
+          <h2 className="my-2 text-2xl italic text-neutral-500">Entrada</h2>
           <div className="grid grid-cols-2 text-white">
             <div className="col-span-2 border-t-2" />
             <span className="font-medium">Data</span>
@@ -139,7 +139,7 @@ export default function RecordMonth() {
             </div>
           </div>
 
-          <h2 className="my-2 text-xl italic text-neutral-500">Despesas</h2>
+          <h2 className="my-2 text-2xl italic text-neutral-500">Saída</h2>
           <div className="grid grid-cols-2 text-white">
             <div className="col-span-2 border-t-2" />
             <span className="font-medium">Data</span>
