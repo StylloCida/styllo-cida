@@ -1,7 +1,13 @@
 'use client'
 
 import { ExpenseMontly, MonthlyResponse, SalesMontly } from '@/lib/types'
-import { Months, commissionCalc, currencyBRL, selectedMonth } from '@/utils'
+import {
+  Months,
+  commissionCalc,
+  currencyBRL,
+  formateDate,
+  selectedMonth,
+} from '@/utils'
 import { Button, Select, SelectItem } from '@nextui-org/react'
 import React, { useState } from 'react'
 
@@ -105,7 +111,7 @@ export default function RecordMonth() {
             <div className="col-span-2 mb-2 border-t-2" />
             {sales.totalVendaPorDia.map((sale) => (
               <React.Fragment key={sale.date}>
-                <p>{new Date(sale.date).toLocaleDateString()}</p>
+                <p>{formateDate(sale.date)}</p>
                 <p>{currencyBRL(sale.value)}</p>
               </React.Fragment>
             ))}
@@ -141,7 +147,7 @@ export default function RecordMonth() {
             <div className="col-span-2 mb-2 border-t-2" />
             {expenses.totalDespesaPorDia.map((expense) => (
               <React.Fragment key={expense.date}>
-                <p>{new Date(expense.date).toLocaleDateString()}</p>
+                <p>{formateDate(expense.date)}</p>
                 <p>{currencyBRL(expense.value)}</p>
               </React.Fragment>
             ))}

@@ -42,3 +42,9 @@ export const commissionCalc = (value: string) => {
   )
   return currencyBRL(Math.round(clearedValue * 0.015))
 }
+
+export const formateDate = (value: string) => {
+  const date = new Date(value)
+  date.setDate(date.getDate() + 1)
+  return date.toLocaleDateString('pt-br')
+}

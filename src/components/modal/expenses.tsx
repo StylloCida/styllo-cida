@@ -63,6 +63,7 @@ export default function ModalExpense() {
                     <SelectItem key={'PAGAMENTO'}>PAGAMENTO</SelectItem>
                     <SelectItem key={'VALE'}>VALE</SelectItem>
                   </Select>
+                  <Input type="date" name="date" label="Data (opcional)" />
                   <Textarea
                     label="Observação"
                     name="description"

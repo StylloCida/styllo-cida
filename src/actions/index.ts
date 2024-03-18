@@ -15,6 +15,7 @@ export async function newSale(
   const parsed = SaleSchema.safeParse({
     value: formData.get('value'),
     category: formData.get('category'),
+    date: formData.get('date'),
     description: formData.get('description'),
   })
 
@@ -24,14 +25,28 @@ export async function newSale(
 
   const clearedValue = clearNumber(parsed.data.value)
 
-  await prisma.sale.create({
-    data: {
-      value: clearedValue,
-      category: parsed.data.category,
-      description: parsed.data.description,
-      date: Today,
-    },
-  })
+  if (parsed.data.date) {
+    const selectedDate = new Date(parsed.data.date)
+    selectedDate.setHours(0, 0, 0, 0)
+
+    await prisma.sale.create({
+      data: {
+        value: clearedValue,
+        category: parsed.data.category,
+        description: parsed.data.description,
+        date: selectedDate,
+      },
+    })
+  } else {
+    await prisma.sale.create({
+      data: {
+        value: clearedValue,
+        category: parsed.data.category,
+        description: parsed.data.description,
+        date: Today,
+      },
+    })
+  }
 
   revalidatePath('/')
   return { success: true, errors: {} }
@@ -44,6 +59,7 @@ export async function newExpense(
   const parsed = ExpenseSchema.safeParse({
     value: formData.get('value'),
     category: formData.get('category'),
+    date: formData.get('date'),
     description: formData.get('description'),
   })
 
@@ -53,14 +69,28 @@ export async function newExpense(
 
   const clearedValue = clearNumber(parsed.data.value)
 
-  await prisma.expense.create({
-    data: {
-      value: clearedValue,
-      category: parsed.data.category,
-      description: parsed.data.description,
-      date: Today,
-    },
-  })
+  if (parsed.data.date) {
+    const selectedDate = new Date(parsed.data.date)
+    selectedDate.setHours(0, 0, 0, 0)
+
+    await prisma.expense.create({
+      data: {
+        value: clearedValue,
+        category: parsed.data.category,
+        description: parsed.data.description,
+        date: selectedDate,
+      },
+    })
+  } else {
+    await prisma.expense.create({
+      data: {
+        value: clearedValue,
+        category: parsed.data.category,
+        description: parsed.data.description,
+        date: Today,
+      },
+    })
+  }
 
   revalidatePath('/')
   return { success: true, errors: {} }

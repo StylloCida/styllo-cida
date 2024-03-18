@@ -1,7 +1,7 @@
 'use client'
 
 import { DataReponse } from '@/lib/types'
-import { Months } from '@/utils'
+import { Months, currencyBRL } from '@/utils'
 import { Button, Input, Select, SelectItem } from '@nextui-org/react'
 import { Expense, Sale } from '@prisma/client'
 import { useState } from 'react'
@@ -110,12 +110,7 @@ export default function Record() {
               <div className="col-span-3 mb-2 border-t-2" />
               {sales.map((sale) => (
                 <>
-                  <span>
-                    {sale.value.toLocaleString('pt-br', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })}
-                  </span>
+                  <span>{currencyBRL(sale.value)}</span>
                   <span>{sale.category}</span>
                   <span>{sale.description}</span>
                 </>
@@ -138,12 +133,7 @@ export default function Record() {
               <div className="col-span-3 mb-2 border-t-2" />
               {expenses.map((expense) => (
                 <>
-                  <span>
-                    {expense.value.toLocaleString('pt-br', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })}
-                  </span>
+                  <span>{currencyBRL(expense.value)}</span>
                   <span>{expense.category}</span>
                   <span>{expense.description}</span>
                 </>

@@ -64,6 +64,7 @@ export default function ModalSale() {
                     <SelectItem key={'CREDITO'}>CREDITO</SelectItem>
                     <SelectItem key={'CREDILOJA'}>CREDILOJA</SelectItem>
                   </Select>
+                  <Input type="date" name="date" label="Data (opcional)" />
                   <Textarea
                     label="Observação"
                     name="description"
