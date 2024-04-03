@@ -1,7 +1,7 @@
 'use client'
 
 import { Today, currencyBRL } from '@/utils'
-import { Input, Textarea } from '@nextui-org/react'
+import { Button, Input, Textarea } from '@nextui-org/react'
 import { Sale, Expense } from '@prisma/client'
 import { Copy } from 'lucide-react'
 import { useState } from 'react'
@@ -73,16 +73,16 @@ export default function Resume({ dailyLog }: Props) {
     totalDespesaLoja + totalRetirada + totalPagamento + totalVale
 
   const resume = `Vendas do dia ${Today.toLocaleDateString('pt-br')}\n
-  ${totalPix && `Pix: ${currencyBRL(totalPix)}`}
-  ${totalDinheiro && `Dinheiro: ${currencyBRL(totalDinheiro)}`}
-  ${totalDebito && `Débito: ${currencyBRL(totalDebito)}`}
-  ${totalCredito && `Crédito: ${currencyBRL(totalCredito)}`}\n
-  Total de vendas do dia: ${currencyBRL(totalVendasDoDia)}\n
-  ${totalDespesaLoja && `Despesa loja: ${currencyBRL(totalDespesaLoja)}`}
-  ${totalRetirada && `Retirada: ${currencyBRL(totalRetirada)}`}
-  ${totalPagamento && `Pagamento: ${currencyBRL(totalPagamento)}`}
-  ${totalVale && `Vale: ${currencyBRL(totalVale)}`}\n
-  ${totalDespesasDoDia && `Total: ${currencyBRL(totalDespesasDoDia)}`}\n
+  ${totalPix > 0 ? `Pix: ${currencyBRL(totalPix)}` : null}
+  ${totalDinheiro > 0 ? `Dinheiro: ${currencyBRL(totalDinheiro)}` : null}
+  ${totalDebito > 0 ? `Débito: ${currencyBRL(totalDebito)}` : null}
+  ${totalCredito > 0 ? `Crédito: ${currencyBRL(totalCredito)}` : null}
+  \nTotal de vendas do dia: ${currencyBRL(totalVendasDoDia)}\n
+  ${totalDespesaLoja > 0 ? `Despesa loja: ${currencyBRL(totalDespesaLoja)}` : null}
+  ${totalRetirada > 0 ? `Retirada: ${currencyBRL(totalRetirada)}` : null}
+  ${totalPagamento > 0 ? `Pagamento: ${currencyBRL(totalPagamento)}` : null}
+  ${totalVale > 0 ? `Vale: ${currencyBRL(totalVale)}` : null}
+  ${totalDespesasDoDia > 0 ? `\nTotal: ${currencyBRL(totalDespesasDoDia)}` : null}\n
   Abertura em dinheiro: ${opening}
   Fechamento em dinheiro: ${closure}`
 
@@ -126,9 +126,9 @@ export default function Resume({ dailyLog }: Props) {
           classNames={{ input: 'p-2.5 min-h-[240px]' }}
           disabled
         />
-        <button className="absolute right-3 top-3" onClick={copyToClipboard}>
-          <Copy size={20} />
-        </button>
+        <Button className="mt-3 w-full" onClick={copyToClipboard} size="sm">
+          <Copy size={20} /> Copiar texto
+        </Button>
       </div>
     </>
   )
