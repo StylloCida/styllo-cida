@@ -105,8 +105,7 @@ export default function Resume({ dailyLog }: Props) {
     resume += `\nTotal: ${currencyBRL(totalDespesasDoDia)}\n`
   }
 
-  resume += `Abertura em dinheiro: ${opening}
-  Fechamento em dinheiro: ${closure}`
+  resume += `\nAbertura em dinheiro: ${opening}\nFechamento em dinheiro: ${closure}`
 
   function copyToClipboard() {
     navigator.clipboard
