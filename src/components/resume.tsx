@@ -73,16 +73,16 @@ export default function Resume({ dailyLog }: Props) {
     totalDespesaLoja + totalRetirada + totalPagamento + totalVale
 
   const resume = `Vendas do dia ${Today.toLocaleDateString('pt-br')}\n
-  ${totalPix > 0 ? `Pix: ${currencyBRL(totalPix)}` : null}
-  ${totalDinheiro > 0 ? `Dinheiro: ${currencyBRL(totalDinheiro)}` : null}
-  ${totalDebito > 0 ? `Débito: ${currencyBRL(totalDebito)}` : null}
-  ${totalCredito > 0 ? `Crédito: ${currencyBRL(totalCredito)}` : null}
+  ${totalPix > 0 && `Pix: ${currencyBRL(totalPix)}`}
+  ${totalDinheiro > 0 && `Dinheiro: ${currencyBRL(totalDinheiro)}`}
+  ${totalDebito > 0 && `Débito: ${currencyBRL(totalDebito)}`}
+  ${totalCredito > 0 && `Crédito: ${currencyBRL(totalCredito)}`}
   \nTotal de vendas do dia: ${currencyBRL(totalVendasDoDia)}\n
-  ${totalDespesaLoja > 0 ? `Despesa loja: ${currencyBRL(totalDespesaLoja)}` : null}
-  ${totalRetirada > 0 ? `Retirada: ${currencyBRL(totalRetirada)}` : null}
-  ${totalPagamento > 0 ? `Pagamento: ${currencyBRL(totalPagamento)}` : null}
-  ${totalVale > 0 ? `Vale: ${currencyBRL(totalVale)}` : null}
-  ${totalDespesasDoDia > 0 ? `\nTotal: ${currencyBRL(totalDespesasDoDia)}` : null}\n
+  ${totalDespesaLoja > 0 && `Despesa loja: ${currencyBRL(totalDespesaLoja)}`}
+  ${totalRetirada > 0 && `Retirada: ${currencyBRL(totalRetirada)}`}
+  ${totalPagamento > 0 && `Pagamento: ${currencyBRL(totalPagamento)}`}
+  ${totalVale > 0 && `Vale: ${currencyBRL(totalVale)}`}
+  ${totalDespesasDoDia > 0 && `\nTotal: ${currencyBRL(totalDespesasDoDia)}`}\n
   Abertura em dinheiro: ${opening}
   Fechamento em dinheiro: ${closure}`
 
