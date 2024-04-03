@@ -21,6 +21,23 @@ export default function RecordMonth() {
   const [totalExpenses, setTotalExpenses] = useState('')
   const [range, setRange] = useState('')
 
+  let total = 0
+
+  if (sales?.totalPix) {
+    total += sales.totalPix
+  }
+  if (sales?.totalDinheiro) {
+    total += sales.totalDinheiro
+  }
+  if (sales?.totalDebito) {
+    total += sales.totalDebito
+  }
+  if (sales?.totalCredito) {
+    total += sales.totalCredito
+  }
+
+  const hasComission = total >= 1000
+
   async function handleSearch() {
     if (!initialMonth) return alert('Selecione o mês inicial')
     if (finalMonth && finalMonth < initialMonth) {
@@ -131,10 +148,12 @@ export default function RecordMonth() {
               <p>Total Geral:</p>
               <p>{totalSales}</p>
             </div>
-            <div className="col-span-2 mb-5 grid grid-cols-2">
-              <p>Comissão: (1,5%)</p>
-              <p>{commissionCalc(totalSales)}</p>
-            </div>
+            {hasComission && (
+              <div className="col-span-2 mb-5 grid grid-cols-2">
+                <p>Comissão: (1,5%)</p>
+                <p>{commissionCalc(totalSales)}</p>
+              </div>
+            )}
           </div>
 
           <h2 className="my-2 text-2xl italic text-neutral-500">Saída</h2>
