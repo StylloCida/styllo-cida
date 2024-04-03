@@ -2,8 +2,10 @@ import Navbar from '@/components/navbar'
 import { Today } from '@/utils'
 import * as actions from '@/actions'
 import { RenderExpenses, RenderSales } from '@/components/render-log'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export default async function Home() {
+  noStore()
   const todayStr = Today.toLocaleDateString('pt-br', { dateStyle: 'long' })
   const dailyLog = await actions.getDailyLogs()
 

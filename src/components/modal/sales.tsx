@@ -62,7 +62,6 @@ export default function ModalSale() {
                     <SelectItem key={'PIX'}>PIX</SelectItem>
                     <SelectItem key={'DEBITO'}>DEBITO</SelectItem>
                     <SelectItem key={'CREDITO'}>CREDITO</SelectItem>
-                    <SelectItem key={'CREDILOJA'}>CREDILOJA</SelectItem>
                   </Select>
                   <Input type="date" name="date" label="Data (opcional)" />
                   <Textarea

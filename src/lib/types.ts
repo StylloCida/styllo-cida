@@ -16,8 +16,8 @@ export type SalesMontly = {
   totalDinheiro: number
   totalDebito: number
   totalCredito: number
-  totalCrediloja: number
 }
+
 export type ExpenseMontly = {
   totalDespesaPorDia: DailyRecord[]
   totalDespesa: number

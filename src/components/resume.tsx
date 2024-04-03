@@ -42,20 +42,47 @@ export default function Resume({ dailyLog }: Props) {
     }
     return acc
   }, 0)
-  const totalCrediloja = dailyLog.sales.reduce((acc, item) => {
-    if (item.category === 'CREDILOJA') {
+
+  const totalDespesaLoja = dailyLog.expenses.reduce((acc, item) => {
+    if (item.category === 'DESPESA') {
+      acc += item.value
+    }
+    return acc
+  }, 0)
+  const totalRetirada = dailyLog.expenses.reduce((acc, item) => {
+    if (item.category === 'RETIRADA') {
+      acc += item.value
+    }
+    return acc
+  }, 0)
+  const totalPagamento = dailyLog.expenses.reduce((acc, item) => {
+    if (item.category === 'PAGAMENTO') {
+      acc += item.value
+    }
+    return acc
+  }, 0)
+  const totalVale = dailyLog.expenses.reduce((acc, item) => {
+    if (item.category === 'VALE') {
       acc += item.value
     }
     return acc
   }, 0)
 
+  const totalVendasDoDia = totalPix + totalDinheiro + totalDebito + totalCredito
+  const totalDespesasDoDia =
+    totalDespesaLoja + totalRetirada + totalPagamento + totalVale
+
   const resume = `Vendas do dia ${Today.toLocaleDateString('pt-br')}\n
-  Pix: ${currencyBRL(totalPix)}
-  Dinheiro: ${currencyBRL(totalDinheiro)}
-  Débito: ${currencyBRL(totalDebito)}
-  Crédito: ${currencyBRL(totalCredito)}
-  Crediloja: ${currencyBRL(totalCrediloja)}
-  
+  ${totalPix && `Pix: ${currencyBRL(totalPix)}`}
+  ${totalDinheiro && `Dinheiro: ${currencyBRL(totalDinheiro)}`}
+  ${totalDebito && `Débito: ${currencyBRL(totalDebito)}`}
+  ${totalCredito && `Crédito: ${currencyBRL(totalCredito)}`}\n
+  Total de vendas do dia: ${currencyBRL(totalVendasDoDia)}\n
+  ${totalDespesaLoja && `Despesa loja: ${currencyBRL(totalDespesaLoja)}`}
+  ${totalRetirada && `Retirada: ${currencyBRL(totalRetirada)}`}
+  ${totalPagamento && `Pagamento: ${currencyBRL(totalPagamento)}`}
+  ${totalVale && `Vale: ${currencyBRL(totalVale)}`}\n
+  ${totalDespesasDoDia && `Total: ${currencyBRL(totalDespesasDoDia)}`}\n
   Abertura em dinheiro: ${opening}
   Fechamento em dinheiro: ${closure}`
 

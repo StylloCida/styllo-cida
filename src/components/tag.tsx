@@ -6,7 +6,6 @@ interface Props {
     | 'PIX'
     | 'DEBITO'
     | 'CREDITO'
-    | 'CREDILOJA'
     | 'DESPESA'
     | 'RETIRADA'
     | 'PAGAMENTO'
@@ -37,12 +36,6 @@ export default function Tag({ type }: Props) {
       return (
         <Chip size="sm" className="bg-violet-600 text-white">
           Crédito
-        </Chip>
-      )
-    case 'CREDILOJA':
-      return (
-        <Chip size="sm" className="bg-fuchsia-600 text-white">
-          Crediloja
         </Chip>
       )
 

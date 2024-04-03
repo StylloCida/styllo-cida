@@ -127,8 +127,6 @@ export default function RecordMonth() {
             <p>{currencyBRL(sales.totalDebito)}</p>
             <p>Crédito</p>
             <p>{currencyBRL(sales.totalCredito)}</p>
-            <p>Crediloja</p>
-            <p>{currencyBRL(sales.totalCrediloja)}</p>
             <div className="col-span-2 my-2 grid grid-cols-2 bg-neutral-200 text-neutral-900">
               <p>Total Geral:</p>
               <p>{totalSales}</p>

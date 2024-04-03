@@ -87,7 +87,6 @@ export default function EditForm() {
             <SelectItem key={'PIX'}>PIX</SelectItem>
             <SelectItem key={'DEBITO'}>DEBITO</SelectItem>
             <SelectItem key={'CREDITO'}>CREDITO</SelectItem>
-            <SelectItem key={'CREDILOJA'}>CREDILOJA</SelectItem>
           </Select>
           <Textarea label="Observação" name="description" value={desc || ''} />
           <ButtonSubmit type="edit" />

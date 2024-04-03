@@ -28,7 +28,6 @@ export async function GET(request: Request) {
   let totalDinheiro = 0
   let totalDebito = 0
   let totalCredito = 0
-  let totalCrediloja = 0
 
   sales.forEach((sale) => {
     switch (sale.category) {
@@ -43,9 +42,6 @@ export async function GET(request: Request) {
         break
       case 'CREDITO':
         totalCredito += sale.value
-        break
-      case 'CREDILOJA':
-        totalCrediloja += sale.value
         break
       default:
         break
@@ -122,7 +118,6 @@ export async function GET(request: Request) {
       totalDinheiro,
       totalDebito,
       totalCredito,
-      totalCrediloja,
     },
     expenses: {
       totalDespesaPorDia,
