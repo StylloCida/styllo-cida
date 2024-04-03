@@ -29,7 +29,6 @@ enum CategorySale {
   PIX
   DEBITO
   CREDITO
-  CREDILOJA
 }
 
 enum CategoryExpense {

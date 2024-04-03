@@ -30,8 +30,7 @@ export default function EditForm() {
     category === 'PIX' ||
     category === 'DINHEIRO' ||
     category === 'DEBITO' ||
-    category === 'CREDITO' ||
-    category === 'CREDILOJA'
+    category === 'CREDITO'
 
   const [loading, setLoading] = useState(false)
 
