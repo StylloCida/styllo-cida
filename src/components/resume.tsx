@@ -69,42 +69,36 @@ export default function Resume({ dailyLog }: Props) {
   }, 0)
 
   const totalVendasDoDia = totalPix + totalDinheiro + totalDebito + totalCredito
-  const totalDespesasDoDia =
-    totalDespesaLoja + totalRetirada + totalPagamento + totalVale
 
   let resume = `Vendas do dia ${Today.toLocaleDateString('pt-br')}\n`
 
   if (totalPix) {
-    resume += `Pix: ${currencyBRL(totalPix)}`
+    resume += `\nPix: ${currencyBRL(totalPix)}\n`
   }
   if (totalDinheiro) {
-    resume += `Dinheiro: ${currencyBRL(totalDinheiro)}`
+    resume += `\nDinheiro: ${currencyBRL(totalDinheiro)}\n`
   }
   if (totalDebito) {
-    resume += `Débito: ${currencyBRL(totalDebito)}`
+    resume += `\nDébito: ${currencyBRL(totalDebito)}\n`
   }
   if (totalCredito) {
-    resume += `Crédito: ${currencyBRL(totalCredito)}`
+    resume += `\nCrédito: ${currencyBRL(totalCredito)}\n`
+  }
+
+  if (totalDespesaLoja) {
+    resume += `\nDespesa loja: ${currencyBRL(totalDespesaLoja)}\n`
+  }
+  if (totalRetirada) {
+    resume += `\nRetirada: ${currencyBRL(totalRetirada)}\n`
+  }
+  if (totalPagamento) {
+    resume += `\nPagamento: ${currencyBRL(totalPagamento)}\n`
+  }
+  if (totalVale) {
+    resume += `\nVale: ${currencyBRL(totalVale)}\n`
   }
 
   resume += `\nTotal de vendas do dia: ${currencyBRL(totalVendasDoDia)}\n`
-
-  if (totalDespesaLoja) {
-    resume += `Despesa loja: ${currencyBRL(totalDespesaLoja)}`
-  }
-  if (totalRetirada) {
-    resume += `Retirada: ${currencyBRL(totalRetirada)}`
-  }
-  if (totalPagamento) {
-    resume += `Pagamento: ${currencyBRL(totalPagamento)}`
-  }
-  if (totalVale) {
-    resume += `Vale: ${currencyBRL(totalVale)}`
-  }
-  if (totalDespesasDoDia) {
-    resume += `\nTotal: ${currencyBRL(totalDespesasDoDia)}\n`
-  }
-
   resume += `\nAbertura em dinheiro: ${opening}\nFechamento em dinheiro: ${closure}`
 
   function copyToClipboard() {
